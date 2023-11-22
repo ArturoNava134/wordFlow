@@ -1,0 +1,59 @@
+#background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto; /* Ajustar la altura según el ancho */
+  z-index: -1; /* Para asegurarse de que el video esté en el fondo */
+  object-fit:fill; /* Escalar el video para llenar el contenedor */
+  object-position: center top; /* Posición del video */
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Ajusta la altura para centrar en la pantalla completa */
+}
+
+#my-button-top, #my-button-bottom {
+  margin-top: 50px;
+  background-color: rgb(221, 161, 48);
+  border: 4px solid black;
+  padding: 30px;
+  font-size: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin: 50px; /* Añade margen entre los botones si es necesario */
+  width: 400px; /* Establece un ancho fijo para ambos botones */
+}
+
+
+
+/* Estilo CSS para el botón oculto */
+.hidden {
+display: none;
+}
+
+/* Estilo CSS para la animación */
+@keyframes appear {
+0% {
+  opacity: 0;
+  transform: translateY(20px);
+}
+100% {
+  opacity: 1;
+  transform: translateY(0);
+}
+}

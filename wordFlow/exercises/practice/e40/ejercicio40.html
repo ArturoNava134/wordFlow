@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop</title>
+    <link rel="stylesheet" href="../../../css/estilosEjercicios.css">
+</head>
+<body>
+    
+    <div class="imageBehind"> 
+        <img class="principalFormImage" src="../../../img/ejercicio40.png" >
+    </div>
+
+<div class="container">
+    <div id="left">
+        <!-- <div class="list" draggable="true"><img src="icon.png">p</div> -->
+        <div class="list" draggable="true">&nbsp;&nbsp;p</div>
+        <div class="q" draggable="true">&nbsp;&nbsp;q</div>
+        <div class="list" draggable="true">&nbsp;&nbsp;p</div>
+        <div class="list" draggable="true">&nbsp;&nbsp;p</div>
+        <div class="list" draggable="true">&nbsp;&nbsp;p</div>
+        <div class="q" draggable="true">&nbsp;&nbsp;q</div>
+    </div>
+    <div id="right"></div>
+    <div id="cajaQ"></div>
+
+    <button id="comprobar" class="comprobarCajas" onclick="comprobar()">comprobar</button>
+</div>
+
+
+<div class="backButton">
+    <a href="../../../select.html">
+        <button class="icon-button">
+            <img src="../../../img/home.png" alt="Icono de flecha hacia atrás">
+        </button> 
+    </a>
+</div>
+
+<script>
+    let lists = document.getElementsByClassName("list");
+    let rightBox = document.getElementById("right");
+    let leftBox = document.getElementById("left");
+
+    let qs = document.getElementsByClassName("q");
+    let qBox = document.getElementById("cajaQ");
+
+    let p = 0;
+    let lq = 0;
+
+    for(list of lists){
+        list.addEventListener("dragstart", function(e){
+            let selected = e.target;
+
+            rightBox.addEventListener("dragover", function(e){
+                e.preventDefault();
+            })
+            rightBox.addEventListener("drop", function(e){
+                rightBox.appendChild(selected);
+                selected = null;    
+                p = p+1;
+                console.log(p);
+            })
+        })
+    }
+
+
+    // for(list of lists){
+    //     list.addEventListener("dragstart", function(e){
+    //         let selected = e.target;
+
+    //         qBox.addEventListener("dragover", function(e){
+    //             e.preventDefault();
+    //         })
+    //         qBox.addEventListener("drop", function(e){
+    //             qBox.appendChild(selected);
+    //             selected = null;    
+    //             p = p-1;
+    //             console.log(p);
+    //         })
+    //     })
+    // }
+
+
+    for(q of qs){
+        q.addEventListener("dragstart", function(r){
+            let selected = r.target;
+
+            qBox.addEventListener("dragover", function(r){
+                r.preventDefault();
+            })
+
+            rightBox.addEventListener("dragover", function(r){
+                r.preventDefault();
+            })
+            qBox.addEventListener("drop", function(r){
+                qBox.appendChild(selected);
+                selected = null;    
+                lq = lq+1;
+                console.log(lq);
+            })
+        })
+    }
+
+    // for(q of qs){
+    //     q.addEventListener("dragstart", function(e){
+    //         let selected = e.target;
+
+    //         rightBox.addEventListener("dragover", function(e){
+    //             e.preventDefault();
+    //         })
+
+    //         rightBox.addEventListener("drop", function(e){
+    //             rightBox.appendChild(selected);
+    //             selected = null;    
+    //             lq = lq-1;
+    //             console.log(lq);
+    //         })
+    //     })
+    // }
+
+
+    function comprobar(){
+        if (p == 4 && lq == 2){
+            console.log("correcto");
+            window.location.href = "http://localhost:8080/diseno/projectp3/diseno/iteraccion2/exercises/practice/e40/correcto.html";
+        }else{
+            console.log("incorrecto");
+            window.location.href = "http://localhost:8080/diseno/projectp3/diseno/iteraccion2/exercises/practice/e40/incorrecto.html";
+        }
+    }
+</script>
+
+</body>
+</html>
